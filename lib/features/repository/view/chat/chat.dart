@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:socket_io_client/socket_io_client.dart';
 import 'package:socket_messanger/core/di/export_package.dart';
 import 'package:socket_messanger/core/helpers/socket_stream.dart';
@@ -26,7 +28,7 @@ List<Map<String,dynamic>> _messages=[];
 
   }
   void connectSocket(){
-     socket = io('http://localhost:3000',
+     socket = io(Platform.isAndroid?"http://10.0.2.2:3000":'http://localhost:3000',
         OptionBuilder()
             .setTransports(['websocket']) // for Flutter or Dart VM
             .build()
